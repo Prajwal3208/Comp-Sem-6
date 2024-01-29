@@ -1,4 +1,4 @@
-
+#selection sort
 def selectionSort(array, size):
 	
 	for ind in range(size):
