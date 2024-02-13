@@ -1,0 +1,40 @@
+import pandas as pd
+
+df = pd.read_csv('titanic_data.csv')
+
+df.head()
+
+grouped_data = df.groupby('sex')
+
+summary_statistics = grouped_data.agg({
+    'age': ['mean', 'median', 'min', 'max', 'std'],
+    'fare':['mean','median','min','max','std']
+}).reset_index()
+
+
+
+print(summary_statistics)
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+
+df = pd.read_csv("iris.csv")
+df.head()
+
+'Iris-setosa'
+setosa = df['Species'] == 'Iris-setosa'
+df[setosa].describe()
+'Iris-versicolor'
+versicolor = df['Species'] == 'Iris-versicolor'
+df[versicolor].describe()
+'Iris-virginica'
+virginica = df['Species'] == 'Iris-virginica'
+df[virginica].describe()
+
+df.dtypes
+df.dtypes.value_counts()
+
