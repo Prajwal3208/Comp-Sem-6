@@ -1,0 +1,8 @@
+import seaborn as sns
+
+
+dd = sns.load_dataset('titanic')
+dd.head()
+
+
+sns.boxplot(x='sex', y='age', data=dd, hue='survived')
