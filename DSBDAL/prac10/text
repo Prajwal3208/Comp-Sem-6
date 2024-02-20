@@ -1,0 +1,30 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
+
+dd= sns.load_dataset('iris')
+
+dd.head()
+
+dd.info()
+
+fetures_datatype=dd.dtypes
+print(fetures_datatype)
+
+dd.hist(figsize=(10, 8))
+plt.suptitle("Histograms of Iris Dataset Features")
+plt.show()
+
+plt.figure(figsize=(10, 8))
+sns.boxplot(data=dd)
+plt.title("Boxplots of Iris Dataset Features")
+plt.show()
+
+Q1 = dd.quantile(0.25)
+Q3 = dd.quantile(0.75)
+IQR = Q3 - Q1
+outliers = ((dd < (Q1 - 1.5 * IQR)) | (dd > (Q3 + 1.5 * IQR))).any(axis=1)
+print("Outliers:")
+print(dd[outliers])
