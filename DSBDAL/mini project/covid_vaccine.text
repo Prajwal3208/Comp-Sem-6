@@ -3,9 +3,31 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-
 dt = pd.read_csv("covid_vaccine_statewise.csv")
 
+1. Describe the dataset
+print("top five rows")
 dt.head()
-
+print("last five rows")
 dt.tail()
+print("Dataset Description:")
+dt.info()
+dt.describe()
+
+2. Number of persons state wise vaccinated for first dose in India
+first_dose_statewise = dt.groupby("State")["First Dose Administered"].sum().reset_index()
+print("\nNumber of persons state-wise vaccinated for the first dose in India:")
+print(first_dose_statewise)
+
+3. Number of persons state-wise vaccinated for the second dose in India
+second_dose_statewise = dt.groupby("State")["Second Dose Administered"].sum().reset_index()
+print("\nNumber of persons state-wise vaccinated for the second dose in India:")
+print(second_dose_statewise)
+
+4. Number of Males vaccinated
+males_vaccinated = dt["Male (Doses Administered)"].sum()
+print("\nNumber of Males vaccinated:", males_vaccinated)
+
+5. Number of females vaccinated
+females_vaccinated = dt["Female (Doses Administered)"].sum()
+print("\nNumber of Females vaccinated:", females_vaccinated)
